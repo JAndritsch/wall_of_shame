@@ -1,27 +1,33 @@
 require 'spec_helper'
 
 describe ParkingViolation do
-  let(:pv) { ParkingViolation.new }
+  let(:violation) { ParkingViolation.new }
 
   describe "attributes" do
-    it { pv.respond_to?(:created_at).should be_true }
-    it { pv.respond_to?(:description).should be_true }
-    it { pv.respond_to?(:car).should be_true }
+    it { violation.respond_to?(:created_at).should be_true }
+    it { violation.respond_to?(:description).should be_true }
+    it { violation.respond_to?(:car).should be_true }
   end
 
   describe "initialization" do
-    let(:car) { nil }
+    let(:car) { Car.new }
     it "accepts a car" do
-      pv = ParkingViolation.new(:car => car)
-      pv.car.should == car
+      violation = ParkingViolation.new(:car => car)
+      violation.car.should == car
     end
   end
 
   describe "validations" do
     let(:car) { Car.new(:getty => true) }
     it "cannot be assigned to a Getty vehicle" do
-      pv.car = car
-      pv.valid?.should be_false
+      violation.car = car
+      violation.valid?.should be_false
+    end
+
+    it "requires a car" do
+      violation.valid?.should be_false
+      violation.car = Car.new
+      violation.valid?.should be_true
     end
   end
 
