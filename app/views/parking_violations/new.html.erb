@@ -8,7 +8,11 @@
   <input type="text" name="car[plate_number]" id="car_plate_number" />
 
   <label for="car_plate_state">Plate state</label>
-  <input type="text" name="car[plate_state]" id="car_plate_state" />
+  <select name="car[plate_state]" id="car_plate_state">
+    <%= options_for_select all_states %>
+  </select>
+  
+
 
   <label for="violation_description">Description</label>
   <textarea name="violation[description]" id="violation_description" rows="15" style="width: 500px"></textarea>

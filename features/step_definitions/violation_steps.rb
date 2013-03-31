@@ -6,13 +6,13 @@ When /^I fill out the violation form for the new car$/ do
   @new_plate_number = "QWERTY123"
   @new_plate_state  = "WI"
   fill_in("car_plate_number", :with => @new_plate_number)
-  fill_in("car_plate_state", :with => @new_plate_state)
+  select(@new_plate_state, :from => "car_plate_state")
   fill_in("violation_description", :with => "This person parked like a jerk.")
 end
 
 When /^I fill out the violation form for the existing car$/ do
   fill_in("car_plate_number", :with => @existing_plate_number)
-  fill_in("car_plate_state", :with => @existing_plate_state)
+  select(@existing_plate_state, :from => "car_plate_state")
   fill_in("violation_description", :with => "This person just doesn't get it")
 end
 
