@@ -10,7 +10,20 @@ describe Car do
     it { car.respond_to?(:plate_number).should be_true }
     it { car.respond_to?(:plate_state).should be_true }
     it { car.respond_to?(:parking_violations).should be_true }
-    it { car.respond_to?(:getty?).should be_true }
+    it { car.respond_to?(:getty).should be_true }
+  end
+
+  describe "validations" do
+    it "requires a plate_number and plate_state" do
+      car = Car.new
+      car.valid?.should be_false
+
+      car.plate_number = "123-ABC"
+      car.valid?.should be_false
+
+      car.plate_state = "WI"
+      car.valid?.should be_true
+    end
   end
 
   describe "repeat_offender?" do

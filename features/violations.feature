@@ -7,5 +7,7 @@ Feature: Creating parking violations
     Given I am on the home page
 
   Scenario: Creating a parking violation for a new, non-office car
-    Then I should see the parking violation form
+    When I click the "New violation" link
+    Then I should be on the new violation page
+      And I should see the parking violation form
 

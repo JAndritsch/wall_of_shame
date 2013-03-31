@@ -1,0 +1,33 @@
+.header {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.header h1 {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.header a {
+  text-decoration: none;
+}
+
+ul.navigation {
+  margin: 0px;
+  border: 0px;
+  border-bottom: 3px solid #eee;
+}
+
+ul.navigation li {
+  display: inline;
+  padding-bottom: 3px;
+  margin-right: 15px;
+}
+
+ul.navigation li.active a {
+  color: #000;
+}
+
+ul.navigation li.active, ul.navigation li:hover {
+  border-bottom: 3px solid #ccc;
+}

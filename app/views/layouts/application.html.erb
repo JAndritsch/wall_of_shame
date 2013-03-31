@@ -16,8 +16,19 @@
 </head>
 <body>
   <div class="container">
-    <%= yield %>
-  </div>
+    <div class="header sixteen columns">
+      <h1><%= link_to "Wall of Shame", root_path %></h1>
+      <ul class="navigation">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "New violation", new_parking_violation_path %></li>
+      </ul>
+    </div>
 
+    <div class="sixteen columns">
+      <%= show_flash.html_safe %>
+      <%= yield %>
+    </div>
+
+  </div>
 </body>
 </html>

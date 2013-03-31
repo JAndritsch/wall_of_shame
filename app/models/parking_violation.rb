@@ -1,6 +1,7 @@
 class ParkingViolation < ActiveRecord::Base
-  attr_accessible :car
+  attr_accessible :car, :description
   validates :car, :presence => true
+  validates :car_id, :presence => true
   validate :not_a_getty_car
   belongs_to :car
 

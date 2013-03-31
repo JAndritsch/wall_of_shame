@@ -26,7 +26,7 @@ describe ParkingViolation do
 
     it "requires a car" do
       violation.valid?.should be_false
-      violation.car = Car.new
+      violation.car = Car.create(:plate_number => "1", :plate_state => "WI")
       violation.valid?.should be_true
     end
   end
