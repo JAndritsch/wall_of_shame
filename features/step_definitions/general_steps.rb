@@ -9,3 +9,7 @@ end
 When /^I click the "(.*?)" button$/ do |button_text|
   click_button(button_text)
 end
+
+Then /^I should see a success message$/ do
+  page.has_css?(".alert-success").should be_true
+end

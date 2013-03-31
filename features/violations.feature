@@ -15,6 +15,7 @@ Feature: Creating parking violations
     Then the new car should have been created
       And the new car should have "1" parking violation
       And I should be editing the new car
+      And I should see a success message
 
   Scenario: Creating a parking violation for an existing car 
     Given there is a car
@@ -26,3 +27,4 @@ Feature: Creating parking violations
       And I click the "Create violation" button
     Then the existing car should have "2" parking violations
       And I should be on the violations page
+      And I should see a success message
