@@ -1,1 +1,5 @@
-<p><%= image_tag @car.parking_violations.last.photo.url %></p>
+<p><%= image_tag @car.parking_violations.last.photo.url, :width => '300' %></p>
+<p>Make: <%= @car.make %></p>
+<p>Model: <%= @car.model %></p>
+<p>Color: <%= @car.color %></p>
+<p>Plate: <%= @car.plate_state %>, <%= @car.plate_number %></p>

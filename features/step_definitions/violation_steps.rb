@@ -31,3 +31,11 @@ end
 Then /^the existing car should have "(.*?)" parking violations?$/ do |count|
   @existing_car.parking_violations.count.should == count.to_i
 end
+
+When /^I upload a photo$/ do
+  attach_file(:violation_photo, File.join(Rails.root, 'features', 'support', 'files', 'dafoe.jpg'))
+end
+
+Then /^I should see the violation photo$/ do
+  page.should have_xpath("//img[contains(@src, 'dafoe.jpg')]") 
+end

@@ -13,24 +13,14 @@ class ParkingViolationsController < ApplicationController
   def create
     plate_number = params[:car][:plate_number]
     plate_state  = params[:car][:plate_state]
-    car = Car.find(:first, :conditions => {
-      :plate_number => plate_number,
-      :plate_state  => plate_state
-    })
-    car_created = false
-    if car
-      @car = car
-    else
-      @car = Car.create(:plate_number => plate_number, :plate_state => plate_state)
-      car_created = true
-    end
+    @car = Car.find_by_plate_number_and_plate_state(plate_number, plate_state) || Car.create(params[:car])
 
     @violation = ParkingViolation.new(params[:violation])
     @violation.car = @car
 
     if @violation.save
       flash[:message] = "The violation was created."
-      if car_created
+      if @car
         flash[:message] += " Please continue filling out information for the new car."
         redirect_to edit_car_path(@car)
       else

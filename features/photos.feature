@@ -13,6 +13,6 @@ Feature: Document a violation
     When I fill out the violation form for the new car
     And I upload a photo
     And I click the "Create violation" button
-    Then I should see the violation details
+    Then I should see the violation photo
 
 
