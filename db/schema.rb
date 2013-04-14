@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310181845) do
+ActiveRecord::Schema.define(:version => 20130414135425) do
 
   create_table "cars", :force => true do |t|
     t.string   "make"
@@ -26,9 +26,13 @@ ActiveRecord::Schema.define(:version => 20130310181845) do
 
   create_table "parking_violations", :force => true do |t|
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "car_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end
