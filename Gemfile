@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 
 gem 'mysql2'
+gem 'paperclip', '~> 3.0'
 
 
 group :assets do
