@@ -3,7 +3,7 @@
 <% if @car_created %>
   <p>The car was created.</p>
 <% end %>
-<%= form_tag(parking_violations_path, :method => :post, :id => "new_parking_violation") do %>
+<%= form_tag(parking_violations_path, :method => :post, :multipart => true, :id => "new_parking_violation") do %>
   <label for="car_plate_number">Plate number</label>
   <input type="text" name="car[plate_number]" id="car_plate_number" />
 
@@ -12,7 +12,8 @@
     <%= options_for_select all_states %>
   </select>
   
-
+  <label for="photo">Upload Photo</label>
+  <%= file_field_tag "violation[photo]" %>
 
   <label for="violation_description">Description</label>
   <textarea name="violation[description]" id="violation_description" rows="15" style="width: 500px"></textarea>
