@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-
+gem 'jquery-rails'
 gem 'mysql2'
 
 
@@ -11,11 +11,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+end
+
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'rspec-rails'
   gem 'database_cleaner'
 end
 
-gem 'jquery-rails'
 
