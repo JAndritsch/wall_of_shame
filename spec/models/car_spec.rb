@@ -1,19 +1,21 @@
 require 'spec_helper'
 
 describe Car do
-  let(:car) { Car.new }
-  
+
+  subject { FactoryGirl.build(:car) }
+
   describe "attributes" do
-    it { car.respond_to?(:make).should be_true }
-    it { car.respond_to?(:model).should be_true }
-    it { car.respond_to?(:color).should be_true }
-    it { car.respond_to?(:plate_number).should be_true }
-    it { car.respond_to?(:plate_state).should be_true }
-    it { car.respond_to?(:parking_violations).should be_true }
-    it { car.respond_to?(:getty).should be_true }
+    it { should respond_to(:make) }
+    it { should respond_to(:model) }
+    it { should respond_to(:color) }
+    it { should respond_to(:plate_number) }
+    it { should respond_to(:plate_state) }
+    it { should respond_to(:parking_violations) }
+    it { should respond_to(:getty) }
   end
 
   describe "validations" do
+
     it "requires a plate_number and plate_state" do
       car = Car.new
       car.valid?.should be_false
@@ -28,18 +30,20 @@ describe Car do
 
   describe "repeat_offender?" do
     it "returns true if a car has violated parking more than once" do
-      car.stub(:parking_violations).and_return(["a", "b", "c"])
-      car.repeat_offender?.should be_true
+      car = FactoryGirl.create(:car_with_violations)
+      expect(car.repeat_offender?).to be_true
     end
 
     it "returns false if a car has violated parking 1 time" do
-      car.stub(:parking_violations).and_return(["a"])
-      car.repeat_offender?.should be_false
+      car = FactoryGirl.create(:car_with_violations, violation_count: 1)
+      expect(car.repeat_offender?).to be_false
     end
 
     it "returns false if a car has violated parking 0 times" do
-      car.stub(:parking_violations).and_return([])
-      car.repeat_offender?.should be_false
+      car = FactoryGirl.create(:car)
+      expect(car.repeat_offender?).to be_false
+      # car.stub(:parking_violations).and_return([])
+      # car.repeat_offender?.should be_false
     end
 
   end
