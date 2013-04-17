@@ -15,20 +15,11 @@ describe Car do
   end
 
   describe "validations" do
-
-    it "requires a plate_number and plate_state" do
-      car = Car.new
-      car.valid?.should be_false
-
-      car.plate_number = "123-ABC"
-      car.valid?.should be_false
-
-      car.plate_state = "WI"
-      car.valid?.should be_true
-    end
+    it { should validate_presence_of(:plate_number) }
+    it { should validate_presence_of(:plate_state) }
   end
 
-  describe "repeat_offender?" do
+  describe "#repeat_offender?" do
     it "returns true if a car has violated parking more than once" do
       car = FactoryGirl.create(:car_with_violations)
       expect(car.repeat_offender?).to be_true
@@ -42,10 +33,12 @@ describe Car do
     it "returns false if a car has violated parking 0 times" do
       car = FactoryGirl.create(:car)
       expect(car.repeat_offender?).to be_false
-      # car.stub(:parking_violations).and_return([])
-      # car.repeat_offender?.should be_false
     end
 
+  end
+
+  describe "#parking_violations" do
+    it { should have_many(:parking_violations) }
   end
 
 end
