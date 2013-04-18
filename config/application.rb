@@ -10,6 +10,7 @@ if defined?(Bundler)
 end
 
 module WallOfShame
+
   class Application < Rails::Application
     config.generators do |g|
       g.test_framework :rspec,
